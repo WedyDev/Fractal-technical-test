@@ -3,15 +3,25 @@ const app=express();
 const mysql=require("mysql");
 const cors = require("cors");
 
+
 app.use(cors());
 app.use(express.json());
 
-const db=mysql.createConnection({
-    host:"127.0.0.1",
-    user:"root",
-    password:"",
-    database:"orders"
-})
+const db = mysql.createConnection({
+    host: "34.45.57.129",
+    user: "testfractal",
+    password: "walter123",
+    database: "orders"
+});
+
+
+db.connect((err) => {
+  if (err) {
+      console.error("Error connecting to the database:", err);
+      return;
+  }
+  console.log("Connected to the database!");
+});
 
 app.post("/create", (req,res)=>{
     const Order=req.body.Order;
@@ -101,6 +111,7 @@ app.delete("/delete/:id", (req,res)=>{
 });
 
 
-app.listen(3001,()=>{
-    console.log("Connect Port 3001")
-})
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
+});
