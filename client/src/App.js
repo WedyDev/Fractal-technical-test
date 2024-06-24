@@ -13,7 +13,7 @@ function OrdersList() {
   const navigate = useNavigate();
 
   const getOrders = () => {
-    Axios.get('http://127.0.0.1:3001/orders').then((response) => {
+    Axios.get('https://fractal-technical-test-backend.vercel.app/orders').then((response) => {
       setOrdersList(response.data);
     });
   };
@@ -29,7 +29,7 @@ function OrdersList() {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete(`http://127.0.0.1:3001/delete/${id}`).then(() => {
+        Axios.delete(`https://fractal-technical-test-backend.vercel.app/delete/${id}`).then(() => {
           getOrders();
         });
         Swal.fire({
