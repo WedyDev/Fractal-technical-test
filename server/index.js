@@ -3,7 +3,6 @@ const app=express();
 const mysql=require("mysql");
 const cors = require("cors");
 
-
 app.use(cors());
 app.use(express.json());
 
@@ -12,15 +11,6 @@ const db = mysql.createConnection({
     user: "testfractal",
     password: "walter123",
     database: "orders"
-});
-
-
-db.connect((err) => {
-  if (err) {
-      console.error("Error connecting to the database:", err);
-      return;
-  }
-  console.log("Connected to the database!");
 });
 
 app.post("/create", (req,res)=>{
@@ -111,7 +101,6 @@ app.delete("/delete/:id", (req,res)=>{
 });
 
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.listen(3001,()=>{
+    console.log("Connect Port 3001")
+})

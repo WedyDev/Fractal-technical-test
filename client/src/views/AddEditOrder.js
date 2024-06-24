@@ -18,7 +18,7 @@ function AddEditOrder() {
   useEffect(() => {
     if (id !== '0') {
       setEdit(true);
-      Axios.get(`http://34.45.57.129:3001/orders/${id}`).then((response) => {
+      Axios.get(`http://127.0.0.1:3001/orders/${id}`).then((response) => {
         const order = response.data;
         setOrder(order.Order);
         setDate(moment(order.Date).format('YYYY-MM-DD'));
@@ -51,7 +51,7 @@ function AddEditOrder() {
     };
 
     if (edit) {
-      Axios.put(`http://34.45.57.129:3001/update/${id}`, orderData).then(() => {
+      Axios.put(`http://127.0.0.1:3001/update/${id}`, orderData).then(() => {
         Swal.fire({
           title: '<strong>Successful update!!</strong>',
           html: `<i>The order ${Order} was updated satisfactorily</i>`,
@@ -68,7 +68,7 @@ function AddEditOrder() {
         });
       });
     } else {
-      Axios.post('http://34.45.57.129:3001/create', orderData).then(() => {
+      Axios.post('http://127.0.0.1:3001/create', orderData).then(() => {
         Swal.fire({
           title: '<strong>Successful register!!</strong>',
           html: `<i>The order ${Order} was registered satisfactorily</i>`,

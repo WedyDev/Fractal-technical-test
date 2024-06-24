@@ -13,7 +13,7 @@ function OrdersList() {
   const navigate = useNavigate();
 
   const getOrders = () => {
-    Axios.get('https://34.45.57.129:3001/orders').then((response) => {
+    Axios.get('http://127.0.0.1:3001/orders').then((response) => {
       setOrdersList(response.data);
     });
   };
@@ -29,7 +29,7 @@ function OrdersList() {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete(`http://34.45.57.129:3001/delete/${id}`).then(() => {
+        Axios.delete(`http://127.0.0.1:3001/delete/${id}`).then(() => {
           getOrders();
         });
         Swal.fire({
